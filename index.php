@@ -41,56 +41,24 @@
             </header>
             <div class="main">
                 <ul id="og-grid" class="og-grid">
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/1.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/2.jpg" alt="img02"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/3.jpg" alt="img03"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/1.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/2.jpg" alt="img02"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/3.jpg" alt="img03"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/1.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/2.jpg" alt="img02"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/3.jpg" alt="img03"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-                            <img src="<?php bloginfo( 'template_directory' ); ?>/images/thumbs/1.jpg" alt="img01"/>
-                        </a>
-                    </li>
+                    <?php while( have_posts() ): the_post(); ?>
+                        <?php if( !has_post_thumbnail() ) continue; ?>
+                        <?php 
+                        $large_image_url = wp_get_attachment_image_src(
+                            get_post_thumbnail_id(), 
+                            'large'
+                        );
+                        ?>
+                        <li>
+                            <a href="#" 
+                                data-largesrc="<?php echo $large_image_url[0]; ?>" 
+                                data-title="<?php the_title() ?>" 
+                                data-description="<?php echo get_the_content() ?>"
+                                >
+                                <?php the_post_thumbnail(); ?>
+                            </a>
+                        </li>
+                    <?php endwhile; ?>
                 </ul>
                 <p>
                     Some final credits to 
@@ -107,5 +75,6 @@
                 Grid.init();
             });
         </script>
+        <?php wp_footer(); ?>
     </body>
 </html>
