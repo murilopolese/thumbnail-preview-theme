@@ -21,7 +21,7 @@
         <link rel="shortcut icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/default.css" />
         <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/component.css" />
-        
+
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/modernizr.custom.js"></script>
         
         <!--=== TITLE ===-->
@@ -30,14 +30,21 @@
         <!--=== WP_HEAD() ===-->
         <?php wp_head(); ?>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
         <div class="container"> 
             <!-- Codrops top bar -->
             <header class="clearfix">
-                <h1>
-                    <?php bloginfo( 'name' ); ?>
-                    <span><?php bloginfo( 'description' ); ?></span>
-                </h1>
+                <?php if( get_header_image() ) : ?>
+                    <img src="<?php header_image(); ?>" 
+                        height="<?php echo get_custom_header()->height; ?>" 
+                        width="<?php echo get_custom_header()->width; ?>" 
+                        alt="" />
+                <?php else : ?>
+                    <h1>
+                        <?php bloginfo( 'name' ); ?>
+                        <span><?php bloginfo( 'description' ); ?></span>
+                    </h1>
+                <?php endif; ?>
             </header>
             <div class="main">
                 <ul id="og-grid" class="og-grid">
