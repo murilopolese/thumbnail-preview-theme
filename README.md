@@ -17,3 +17,8 @@ Please read about how much he doesn't give a shit: http://www.wtfpl.net/
 * Add hover state to thumbnails
 
 # Changelog
+## v0.1
+* Custom background
+* Custom header
+* Post thumbnail support
+* Display only posts with thumbnail
