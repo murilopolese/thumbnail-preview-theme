@@ -17,13 +17,12 @@
         </script>
 
 
-        <!--=== LINK TAGS ===-->        
-        <link rel="shortcut icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/component.css" />
+        <!--=== LINK TAGS ===-->
+        <link rel="shortcut icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/build.css" />
 
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/modernizr.custom.js"></script>
-        
+
         <!--=== TITLE ===-->
         <title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo( 'name' ); ?></title>
 
@@ -31,13 +30,13 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
-        <div class="container"> 
+        <div class="container">
             <!-- Codrops top bar -->
             <header class="clearfix">
                 <?php if( get_header_image() ) : ?>
-                    <img src="<?php header_image(); ?>" 
-                        height="<?php echo get_custom_header()->height; ?>" 
-                        width="<?php echo get_custom_header()->width; ?>" 
+                    <img src="<?php header_image(); ?>"
+                        height="<?php echo get_custom_header()->height; ?>"
+                        width="<?php echo get_custom_header()->width; ?>"
                         alt="" />
                 <?php else : ?>
                     <h1>
@@ -50,16 +49,16 @@
                 <ul id="og-grid" class="og-grid">
                     <?php while( have_posts() ): the_post(); ?>
                         <?php if( !has_post_thumbnail() ) continue; ?>
-                        <?php 
+                        <?php
                         $large_image_url = wp_get_attachment_image_src(
-                            get_post_thumbnail_id(), 
+                            get_post_thumbnail_id(),
                             'large'
                         );
                         ?>
                         <li>
-                            <a href="#" 
-                                data-largesrc="<?php echo $large_image_url[0]; ?>" 
-                                data-title="<?php the_title() ?>" 
+                            <a href="#"
+                                data-largesrc="<?php echo $large_image_url[0]; ?>"
+                                data-title="<?php the_title() ?>"
                                 data-description="<?php echo get_the_content() ?>"
                                 >
                                 <?php the_post_thumbnail(); ?>
@@ -68,7 +67,7 @@
                     <?php endwhile; ?>
                 </ul>
                 <!-- <p>
-                    Some final credits to 
+                    Some final credits to
                     <a href="#">
                         Someone
                     </a>
