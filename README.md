@@ -1,6 +1,6 @@
 # Layout Created by Codrops
 
-Please read about our license: http://tympanus.net/codrops/licensing/
+Please read about their license: http://tympanus.net/codrops/licensing/
 
 # WordPress theme by Murilo Polese
 
