@@ -67,12 +67,12 @@
                         </li>
                     <?php endwhile; ?>
                 </ul>
-                <p>
+                <!-- <p>
                     Some final credits to 
                     <a href="#">
                         Someone
                     </a>
-                </p>
+                </p> -->
             </div>
         </div><!-- /container -->
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/jquery.min.js"></script>
