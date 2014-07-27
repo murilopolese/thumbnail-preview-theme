@@ -21,7 +21,8 @@
 	position: relative;
 }
 
-.og-grid li.og-expanded > a::after {
+/*.og-grid li.og-expanded > a::after {*/
+.og-grid li.og-expanded > a .after {
 	top: auto;
 	border: solid transparent;
 	content: " ";
@@ -191,5 +192,5 @@
 
 	.og-fullimg { display: none; }
 	.og-details { float: none; width: 100%; }
-	
+
 }

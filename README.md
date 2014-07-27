@@ -7,18 +7,19 @@ Please read about their license: http://tympanus.net/codrops/licensing/
 Please read about how much he doesn't give a shit: http://www.wtfpl.net/
 
 # Road map
-* Register and display blog author / Credits
-* Add favicon
-* Add support to video
+* Better interface to edit custom fields
 * Add support to pages
-* Add infinite scroll
-* Customize all blog colors
+* Add support to video
 * Add support to small galleries on post preview
+* Add favicon
+* Register and display blog author / Credits
+* Add infinite scroll
 * Add hover state to thumbnails
 
 # Changelog
 ## v0.2
-* Add link to project on post
+* Add external link custom field
+* Customize post colors
 
 ## v0.1
 * Custom background

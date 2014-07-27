@@ -383,7 +383,9 @@ var Grid = (function() {
 					largesrc 	: $itemEl.data( 'largesrc' ),
 					title 		: $itemEl.data( 'title' ),
 					description : $itemEl.data( 'description' ),
-					linktext	: $itemEl.data( 'linktext' )
+					linktext	: $itemEl.data( 'linktext' ),
+					bgcolor		: $itemEl.data( 'bgcolor' ),
+					textcolor	: $itemEl.data( 'textcolor' )
 				};
 
 			this.$title.html( eldata.title );
@@ -395,6 +397,9 @@ var Grid = (function() {
 			}
 
 			var self = this;
+			self.$previewEl.css( 'background', eldata.bgcolor );
+			self.$item.find('.after').css( 'borderBottomColor', eldata.bgcolor );
+			self.$previewEl.css( 'color', eldata.textcolor );
 
 			// remove the current image in the preview
 			if( typeof self.$largeImg != 'undefined' ) {

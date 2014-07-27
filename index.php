@@ -46,6 +46,7 @@
                             get_post_thumbnail_id(),
                             'large'
                         );
+
                         $post_custom = get_post_custom();
                         if( empty( $post_custom[ 'post_link' ] ) ) {
                             $post_custom[ 'post_link' ] = array();
@@ -55,6 +56,14 @@
                             $post_custom[ 'post_link_text' ] = array();
                             $post_custom[ 'post_link_text' ][] = '';
                         }
+                        if( empty( $post_custom[ 'bgcolor' ] ) ) {
+                            $post_custom[ 'bgcolor' ] = array();
+                            $post_custom[ 'bgcolor' ][] = '#ddd';
+                        }
+                        if( empty( $post_custom[ 'textcolor' ] ) ) {
+                            $post_custom[ 'textcolor' ] = array();
+                            $post_custom[ 'textcolor' ][] = '#333';
+                        }
                         ?>
                         <li>
                             <a href="<?php echo $post_custom[ 'post_link' ][0]; ?>"
@@ -62,8 +71,11 @@
                                 data-title="<?php the_title() ?>"
                                 data-description="<?php echo get_the_content() ?>"
                                 data-linktext="<?php echo $post_custom[ 'post_link_text' ][0]; ?>"
+                                data-bgcolor="<?php echo $post_custom[ 'bgcolor' ][0]; ?>"
+                                data-textcolor="<?php echo $post_custom[ 'textcolor' ][0]; ?>"
                                 >
                                 <?php the_post_thumbnail(); ?>
+                                <span class="after"></span>
                             </a>
                         </li>
                     <?php endwhile; ?>
