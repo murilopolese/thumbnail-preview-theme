@@ -9,14 +9,6 @@
         <meta name="keywords" content="thumbnails, grid, preview, google image search, jquery, image grid, expanding, preview, portfolio" />
         <meta name="author" content="Murilo Polese" />
 
-        <!--=== SCRIPT TAGS ===-->
-        <script>
-            // Expose path to Javascript
-            var template_directory = "<?php bloginfo( 'template_directory' ); ?>";
-            var wp_ajax_url = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
-        </script>
-
-
         <!--=== LINK TAGS ===-->
         <link rel="shortcut icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico">
         <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/build.css" />
@@ -54,24 +46,28 @@
                             get_post_thumbnail_id(),
                             'large'
                         );
+                        $post_custom = get_post_custom();
+                        if( empty( $post_custom[ 'post_link' ] ) ) {
+                            $post_custom[ 'post_link' ] = array();
+                            $post_custom[ 'post_link' ][] = '#';
+                        }
+                        if( empty( $post_custom[ 'post_link_text' ] ) ) {
+                            $post_custom[ 'post_link_text' ] = array();
+                            $post_custom[ 'post_link_text' ][] = '';
+                        }
                         ?>
                         <li>
-                            <a href="#"
+                            <a href="<?php echo $post_custom[ 'post_link' ][0]; ?>"
                                 data-largesrc="<?php echo $large_image_url[0]; ?>"
                                 data-title="<?php the_title() ?>"
                                 data-description="<?php echo get_the_content() ?>"
+                                data-linktext="<?php echo $post_custom[ 'post_link_text' ][0]; ?>"
                                 >
                                 <?php the_post_thumbnail(); ?>
                             </a>
                         </li>
                     <?php endwhile; ?>
                 </ul>
-                <!-- <p>
-                    Some final credits to
-                    <a href="#">
-                        Someone
-                    </a>
-                </p> -->
             </div>
         </div><!-- /container -->
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/jquery.min.js"></script>
