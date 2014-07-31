@@ -13,7 +13,7 @@
         <link rel="shortcut icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico">
         <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'template_directory' ); ?>/css/build.css" />
 
-        <script src="<?php bloginfo( 'template_directory' ); ?>/js/modernizr.custom.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/vendor/modernizr.custom.js"></script>
 
         <!--=== TITLE ===-->
         <title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo( 'name' ); ?></title>
@@ -22,73 +22,48 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
-        <div class="container">
-            <!-- Codrops top bar -->
-            <header class="clearfix">
-                <?php if( get_header_image() ) : ?>
-                    <img src="<?php header_image(); ?>"
-                        height="<?php echo get_custom_header()->height; ?>"
-                        width="<?php echo get_custom_header()->width; ?>"
-                        alt="" />
-                <?php else : ?>
-                    <h1>
-                        <?php bloginfo( 'name' ); ?>
-                        <span><?php bloginfo( 'description' ); ?></span>
-                    </h1>
-                <?php endif; ?>
-            </header>
-            <div class="main">
-                <ul id="og-grid" class="og-grid">
-                    <?php while( have_posts() ): the_post(); ?>
-                        <?php if( !has_post_thumbnail() ) continue; ?>
-                        <?php
-                        $large_image_url = wp_get_attachment_image_src(
-                            get_post_thumbnail_id(),
-                            'large'
-                        );
+        <header>
+            <img src="<?php header_image(); ?>"
+                height="<?php echo get_custom_header()->height; ?>"
+                width="<?php echo get_custom_header()->width; ?>"
+                alt="" />
+            <h1>
+                <?php bloginfo( 'name' ); ?>
+            </h1>
+            <h2><?php bloginfo( 'description' ); ?></h2>
+        </header>
+        <main>
 
-                        $post_custom = get_post_custom();
-                        if( empty( $post_custom[ 'post_link' ] ) ) {
-                            $post_custom[ 'post_link' ] = array();
-                            $post_custom[ 'post_link' ][] = '#';
-                        }
-                        if( empty( $post_custom[ 'post_link_text' ] ) ) {
-                            $post_custom[ 'post_link_text' ] = array();
-                            $post_custom[ 'post_link_text' ][] = '';
-                        }
-                        if( empty( $post_custom[ 'bgcolor' ] ) ) {
-                            $post_custom[ 'bgcolor' ] = array();
-                            $post_custom[ 'bgcolor' ][] = '#ddd';
-                        }
-                        if( empty( $post_custom[ 'textcolor' ] ) ) {
-                            $post_custom[ 'textcolor' ] = array();
-                            $post_custom[ 'textcolor' ][] = '#333';
-                        }
-                        ?>
-                        <li>
-                            <a href="<?php echo $post_custom[ 'post_link' ][0]; ?>"
-                                data-largesrc="<?php echo $large_image_url[0]; ?>"
-                                data-title="<?php the_title() ?>"
-                                data-description="<?php echo get_the_content() ?>"
-                                data-linktext="<?php echo $post_custom[ 'post_link_text' ][0]; ?>"
-                                data-bgcolor="<?php echo $post_custom[ 'bgcolor' ][0]; ?>"
-                                data-textcolor="<?php echo $post_custom[ 'textcolor' ][0]; ?>"
-                                >
-                                <?php the_post_thumbnail(); ?>
-                                <span class="after"></span>
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-            </div>
-        </div><!-- /container -->
-        <script src="<?php bloginfo( 'template_directory' ); ?>/js/jquery.min.js"></script>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/js/grid.js"></script>
-        <script>
-            $(function() {
-                Grid.init();
-            });
-        </script>
+            <section class="thumbnail-row">
+                <article id="1">
+                    <img src="#" alt="" title="" />
+                </article>
+            </section>
+
+            <section class="preview-row">
+                <figure>
+                    <img src="#" alt="" title="" />
+                </figure>
+                <article>
+                    <h1>Title</h1>
+                    <p>
+                        Paragraph
+                    </p>
+                    <p>
+                        <a href="#">Link</a>
+                    </p>
+                </article>
+            </section>
+
+        </main>
+        <footer>
+
+        </footer>
+
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/vendor/jquery.min.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/vendor/grid.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/main.js"></script>
+
         <?php wp_footer(); ?>
     </body>
 </html>
