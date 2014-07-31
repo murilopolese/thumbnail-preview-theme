@@ -1,2 +1,46 @@
-@import 'vendor/bootstrap/css/bootstrap.css';
-@import 'vendor/bootstrap/css/bootstrap-theme.css';
+@import 'vendor/bootstrap/less/bootstrap.less';
+
+header {
+	.container;
+	section {
+		.make-row;
+		.text-center();
+		img {
+			max-width: 100%;
+		}
+	}
+}
+
+ .thumbnail-row{
+	.container;
+	section {
+		.make-row;
+		article {
+			.make-xs-column( 3 );
+		}
+		&.preview-row {
+		}
+
+	}
+}
+
+.preview-row {
+	.container;
+	section {
+		.make-row;
+		// .hidden;
+		figure {
+			.make-xs-column( 12 );
+			.make-sm-column( 5 );
+		}
+		aside {
+			.make-xs-column( 12 );
+			.make-sm-column( 7 );
+		}
+	}
+}
+
+.preview-full-width {
+	width: 100%;
+	background: pink;
+}

@@ -22,40 +22,66 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
+
         <header>
-            <img src="<?php header_image(); ?>"
-                height="<?php echo get_custom_header()->height; ?>"
-                width="<?php echo get_custom_header()->width; ?>"
-                alt="" />
-            <h1>
-                <?php bloginfo( 'name' ); ?>
-            </h1>
-            <h2><?php bloginfo( 'description' ); ?></h2>
+            <section class="image">
+                <img src="#<?php //header_image(); ?>" width="200" height="200" />
+            </section>
+            <section class="text">
+                <h1>
+                    <?php bloginfo( 'name' ); ?>
+                </h1>
+                <h2><?php bloginfo( 'description' ); ?></h2>
+                <p>Bio</p>
+            </section>
         </header>
-        <main>
-
-            <section class="thumbnail-row">
-                <article id="1">
-                    <img src="#" alt="" title="" />
-                </article>
-            </section>
-
-            <section class="preview-row">
-                <figure>
-                    <img src="#" alt="" title="" />
-                </figure>
+        
+        <div class="thumbnail-row">
+            <section>
                 <article>
-                    <h1>Title</h1>
-                    <p>
-                        Paragraph
-                    </p>
-                    <p>
-                        <a href="#">Link</a>
-                    </p>
+                    <a href="#">
+                        <img src="#" width="100%" height="180"/>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="#" width="100%" height="180"/>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="#" width="100%" height="180"/>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="#" width="100%" height="180"/>
+                    </a>
                 </article>
             </section>
+        </div>
 
-        </main>
+        <div class="preview-full-width">
+            <div class="preview-row">
+                <section>
+                    <article>
+                        <figure>
+                            <img src="#" width="100%" height="360"/>
+                        </figure>
+                        <aside>
+                            <h1>Title</h1>
+                            <p>
+                                Paragraph
+                            </p>
+                            <p>
+                                <a href="#">Link</a>
+                            </p>
+                        </aside>
+                    </article>
+                </section>
+            </div>
+        </div>
+
         <footer>
 
         </footer>
