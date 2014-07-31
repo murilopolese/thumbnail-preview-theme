@@ -61,7 +61,7 @@
         </footer>
 
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/vendor/jquery.min.js"></script>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/js/vendor/grid.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/vendor/bootstrap.min.js"></script>
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/main.js"></script>
 
         <?php wp_footer(); ?>
