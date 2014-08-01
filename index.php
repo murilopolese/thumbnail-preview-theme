@@ -94,9 +94,20 @@
                                         'thumbnail'
                                     )
                                 );
+                                $post_custom = get_post_custom();
+                                if( empty( $post_custom[ 'bgcolor' ] ) ) {
+                                    $post_custom[ 'bgcolor' ] = array( '#ddd' );
+                                }
+                                if( empty( $post_custom[ 'textcolor' ] ) ) {
+                                    $post_custom[ 'textcolor' ] = array( '#333' );
+                                }
+                                $post_custom[ 'bgcolor' ] = reset( $post_custom[ 'bgcolor' ] );
+                                $post_custom[ 'textcolor' ] = reset( $post_custom[ 'textcolor' ] );
                             ?>
                             <article>
-                                <a href="#post-<?php the_ID(); ?>">
+                                <a href="#post-<?php the_ID(); ?>"
+                                    data-background="<?php echo $post_custom[ 'bgcolor' ]; ?>"
+                                    data-color="<?php echo $post_custom[ 'textcolor' ]; ?>">
                                     <img src="<?php echo $thumbnail; ?>" width="100%" />
                                 </a>
                             </article>

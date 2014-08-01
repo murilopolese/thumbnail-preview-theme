@@ -1,9 +1,12 @@
 @import 'vendor/bootstrap/less/bootstrap.less';
 
-@font-size-base: 16px;
+@font-size-base: 18px;
 
 section {
 	.make-row;
+}
+a:link {
+	color: @text-color;
 }
 
 header {
@@ -28,9 +31,6 @@ header {
 		article {
 			.make-xs-column( 3 );
 		}
-		&.preview-row {
-		}
-
 	}
 }
 
@@ -46,13 +46,21 @@ header {
 		aside {
 			.make-xs-column( 12 );
 			.make-sm-column( 7 );
+			a:link {
+				padding: 5px 10px;
+				font-weight: bold;
+				border: solid 2px @text-color;
+			}
+			a:hover {
+				color: lighten( @text-color, 10% );
+				text-decoration: none;
+			}
 		}
 	}
 }
 
 .preview-full-width {
 	width: 100%;
-	background: pink;
 }
 
 footer, .page {
