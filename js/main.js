@@ -7,5 +7,6 @@ $( document ).ready( function() {
 			$( '.preview-row section' ).slideUp();
 			$( id ).slideDown();
 		}
+		return false;
 	})
 });
