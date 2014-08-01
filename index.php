@@ -24,18 +24,18 @@
     <body <?php body_class(); ?>>
 
         <header>
-            <?php if( get_header_image() ) : ?>
-                <section class="image">
-                    <img src="<?php header_image(); ?>" />
-                </section>
-            <?php else : ?>
-                <section class="text">
-                    <h1>
-                        <?php bloginfo( 'name' ); ?>
-                    </h1>
-                    <h2><?php bloginfo( 'description' ); ?></h2>
-                </section>
-            <?php endif; ?>
+            <section>
+                <article>
+                    <?php if( get_header_image() ) : ?>
+                        <img src="<?php header_image(); ?>" />
+                    <?php else : ?>
+                        <h1>
+                            <?php bloginfo( 'name' ); ?>
+                        </h1>
+                        <h2><?php bloginfo( 'description' ); ?></h2>
+                    <?php endif; ?>
+                </article>
+            </section>
         </header>
 
 

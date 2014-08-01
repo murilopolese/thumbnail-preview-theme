@@ -2,17 +2,23 @@
 
 @font-size-base: 16px;
 
+section {
+	.make-row;
+}
+
 header {
 	.container;
+	margin-top: @grid-gutter-width;
+	margin-bottom: @grid-gutter-width;
 	section {
 		.text-center();
+		article {
+			.make-xs-column( 12 );
+		}
 		img {
 			max-width: 100%;
 		}
 	}
-}
-section {
-	.make-row;
 }
 
  .thumbnail-row{

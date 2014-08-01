@@ -5897,10 +5897,10 @@ button.close {
 .panel-body:after,
 .modal-footer:before,
 .modal-footer:after,
-header:before,
-header:after,
 section:before,
 section:after,
+header:before,
+header:after,
 .thumbnail-row:before,
 .thumbnail-row:after,
 .preview-row:before,
@@ -5925,8 +5925,8 @@ footer:after {
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
-header:after,
 section:after,
+header:after,
 .thumbnail-row:after,
 .preview-row:after,
 footer:after {
@@ -6178,11 +6178,17 @@ footer:after {
     display: none !important;
   }
 }
+section {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 header {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 @media (min-width: 768px) {
   header {
@@ -6214,12 +6220,16 @@ header > .navbar-collapse {
 header section {
   text-align: center;
 }
+header section article {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 header section img {
   max-width: 100%;
-}
-section {
-  margin-left: -15px;
-  margin-right: -15px;
 }
 .thumbnail-row {
   margin-right: auto;
