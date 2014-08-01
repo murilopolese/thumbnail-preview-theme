@@ -24,15 +24,18 @@
     <body <?php body_class(); ?>>
 
         <header>
-            <section class="image">
-                <img src="<?php header_image(); ?>" />
-            </section>
-            <section class="text">
-                <h1>
-                    <?php bloginfo( 'name' ); ?>
-                </h1>
-                <h2><?php bloginfo( 'description' ); ?></h2>
-            </section>
+            <?php if( get_header_image() ) : ?>
+                <section class="image">
+                    <img src="<?php header_image(); ?>" />
+                </section>
+            <?php else : ?>
+                <section class="text">
+                    <h1>
+                        <?php bloginfo( 'name' ); ?>
+                    </h1>
+                    <h2><?php bloginfo( 'description' ); ?></h2>
+                </section>
+            <?php endif; ?>
         </header>
 
 
@@ -59,9 +62,20 @@
                 <section>
                     <?php while( $posts->have_posts() ) : ?>
                         <?php $posts->the_post(); ?>
+                        <?php
+                            // Skip posts without thumbnail
+                            if( !has_post_thumbnail() ) continue;
+                            // Get large thumbnail url
+                            $thumbnail = reset(
+                                wp_get_attachment_image_src(
+                                    get_post_thumbnail_id(),
+                                    'thumbnail'
+                                )
+                            );
+                        ?>
                         <article>
                             <a href="#post-<?php the_ID(); ?>">
-                                <?php the_post_thumbnail(); ?>
+                                <img src="<?php echo $thumbnail; ?>" width="100%" />
                             </a>
                         </article>
                     <?php endwhile; ?>
@@ -118,6 +132,22 @@
         <?php endfor; ?>
 
         <footer>
+            <?php
+            $args = array(
+                'post_type'         => 'page',
+                'posts_per_page'    => -1
+            );
+            $posts = new WP_Query( $args );
+            ?>
+            <?php while( $posts->have_posts() ) : ?>
+                <?php $posts->the_post(); ?>
+                <section>
+                    <article>
+                        <h2><?php the_title(); ?></h2>
+                        <?php the_content(); ?>
+                    </article>
+                </section>
+            <?php endwhile; ?>
 
         </footer>
 

@@ -1,20 +1,24 @@
 @import 'vendor/bootstrap/less/bootstrap.less';
 
+@font-size-base: 16px;
+
 header {
 	.container;
 	section {
-		.make-row;
 		.text-center();
 		img {
 			max-width: 100%;
 		}
 	}
 }
+section {
+	.make-row;
+}
 
  .thumbnail-row{
 	.container;
 	section {
-		.make-row;
+		padding: @grid-gutter-width/2 0;
 		article {
 			.make-xs-column( 3 );
 		}
@@ -27,8 +31,8 @@ header {
 .preview-row {
 	.container;
 	section {
-		.make-row;
 		display: none;
+		padding: @grid-gutter-width 0;
 		figure {
 			.make-xs-column( 12 );
 			.make-sm-column( 5 );
@@ -43,4 +47,15 @@ header {
 .preview-full-width {
 	width: 100%;
 	background: pink;
+}
+
+footer {
+	.container;
+	.text-center;
+	margin-bottom: @grid-gutter-width;
+	article {
+		.make-xs-column( 12 );
+		.make-md-column( 8 );
+		.make-md-column-offset( 2 );
+	}
 }
