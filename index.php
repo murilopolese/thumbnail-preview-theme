@@ -25,62 +25,97 @@
 
         <header>
             <section class="image">
-                <img src="#<?php //header_image(); ?>" width="200" height="200" />
+                <img src="<?php header_image(); ?>" />
             </section>
             <section class="text">
                 <h1>
                     <?php bloginfo( 'name' ); ?>
                 </h1>
                 <h2><?php bloginfo( 'description' ); ?></h2>
-                <p>Bio</p>
             </section>
         </header>
-        
-        <div class="thumbnail-row">
-            <section>
-                <article>
-                    <a href="#">
-                        <img src="#" width="100%" height="180"/>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="#" width="100%" height="180"/>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="#" width="100%" height="180"/>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="#" width="100%" height="180"/>
-                    </a>
-                </article>
-            </section>
-        </div>
 
-        <div class="preview-full-width">
-            <div class="preview-row">
+
+        <?php
+        $posts_per_page = 4;
+        $args = array(
+            'post_type'         => 'post',
+            'posts_per_page'    => $posts_per_page
+        );
+        $posts = new WP_Query( $args );
+        ?>
+
+        <?php for( $i = 1; $i <= $posts->max_num_pages; $i++ ) : ?>
+            <?php
+            $args = array(
+                'post_type'         => 'post',
+                'posts_per_page'    => $posts_per_page,
+                'paged'             => $i
+            );
+            $posts = new WP_Query( $args );
+            ?>
+
+            <div class="thumbnail-row">
                 <section>
-                    <article>
-                        <figure>
-                            <img src="#" width="100%" height="360"/>
-                        </figure>
-                        <aside>
-                            <h1>Title</h1>
-                            <p>
-                                Paragraph
-                            </p>
-                            <p>
-                                <a href="#">Link</a>
-                            </p>
-                        </aside>
-                    </article>
+                    <?php while( $posts->have_posts() ) : ?>
+                        <?php $posts->the_post(); ?>
+                        <article>
+                            <a href="#post-<?php the_ID(); ?>">
+                                <?php the_post_thumbnail(); ?>
+                            </a>
+                        </article>
+                    <?php endwhile; ?>
                 </section>
             </div>
-        </div>
+
+            <div class="preview-full-width">
+                <div class="preview-row">
+                    <?php while( $posts->have_posts() ) : ?>
+                        <?php $posts->the_post(); ?>
+                        <?php
+                        	// Skip posts without thumbnail
+                        	if( !has_post_thumbnail() ) continue;
+                        	// Get large thumbnail url
+                        	$large_image_url = reset(
+                                wp_get_attachment_image_src(
+                            		get_post_thumbnail_id(),
+                            		'large'
+                            	)
+                            );
+                            $post_custom = get_post_custom();
+                            if( empty( $post_custom[ 'post_link' ] ) ) {
+                                $post_custom[ 'post_link' ] = array( '#' );
+                            }
+                            if( empty( $post_custom[ 'post_link_text' ] ) ) {
+                                $post_custom[ 'post_link_text' ] = array( 'View more' );
+                            }
+                            $post_custom[ 'post_link' ] = reset( $post_custom[ 'post_link' ] );
+                            $post_custom[ 'post_link_text' ] = reset( $post_custom[ 'post_link_text' ] );
+                        ?>
+                        <section id="post-<?php the_ID(); ?>">
+                            <article>
+                                <figure>
+                                    <img src="<?php echo $large_image_url; ?>"
+                                        width="100%" />
+                                </figure>
+                                <aside>
+                                    <h1><?php the_title(); ?></h1>
+                                    <?php the_content(); ?>
+                                    <?php if( $post_custom[ 'post_link' ] != '#' ) : ?>
+                                        <p>
+                                            <a href="<?php echo $post_custom[ 'post_link' ]; ?>">
+                                                <?php echo $post_custom[ 'post_link_text' ]; ?>
+                                            </a>
+                                        </p>
+                                    <?php endif; ?>
+                                </aside>
+                            </article>
+                        </section>
+                    <?php endwhile; ?>
+                </div>
+            </div>
+
+        <?php endfor; ?>
 
         <footer>
 

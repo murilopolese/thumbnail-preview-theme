@@ -6303,6 +6303,7 @@ header section img {
 .preview-row section {
   margin-left: -15px;
   margin-right: -15px;
+  display: none;
 }
 .preview-row section figure {
   float: left;
