@@ -54,7 +54,7 @@
                     <?php $posts->the_post(); ?>
                     <section>
                         <article>
-                            <h2><?php the_title(); ?></h2>
+                            <!-- <h3><?php the_title(); ?></h3> -->
                             <?php the_content(); ?>
                         </article>
                     </section>
@@ -146,7 +146,7 @@
                                             width="100%" />
                                     </figure>
                                     <aside>
-                                        <h1><?php the_title(); ?></h1>
+                                        <h3><?php the_title(); ?></h3>
                                         <?php the_content(); ?>
                                         <?php if( $post_custom[ 'post_link' ] != '#' ) : ?>
                                             <p>
@@ -179,7 +179,7 @@
                 <?php $posts->the_post(); ?>
                 <section>
                     <article>
-                        <h2><?php the_title(); ?></h2>
+                        <!-- <h3><?php the_title(); ?></h3> -->
                         <?php the_content(); ?>
                     </article>
                 </section>

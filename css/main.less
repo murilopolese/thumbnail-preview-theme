@@ -1,5 +1,6 @@
 @import 'fontfaces.less';
 @import 'vendor/bootstrap/less/bootstrap.less';
+@import 'vendor/font-awesome/less/font-awesome.less';
 
 @font-size-base: 20px;
 @font-family-sans-serif: 'Lato';
@@ -10,11 +11,23 @@ section {
 a:link {
 	color: @text-color;
 }
+a:hover {
+	color: lighten( @text-color, 10% );
+}
+a:visited {
+	color: lighten( @text-color, 20% );
+}
+a:active {
+	color: lighten( @text-color, 30% );
+}
+
+header, main, footer {
+	padding-top: @grid-gutter-width/2;
+	padding-bottom: @grid-gutter-width/2;
+}
 
 header {
 	.container;
-	margin-top: @grid-gutter-width;
-	margin-bottom: @grid-gutter-width;
 	section {
 		.text-center();
 		article {
@@ -26,7 +39,7 @@ header {
 	}
 }
 
- .thumbnail-row{
+.thumbnail-row{
 	.container;
 	section {
 		padding: @grid-gutter-width/2 0;
@@ -67,7 +80,7 @@ header {
 	width: 100%;
 }
 
-footer, .page {
+.page {
 	.container;
 	.text-center;
 	margin-bottom: @grid-gutter-width;
@@ -76,4 +89,8 @@ footer, .page {
 		.make-md-column( 8 );
 		.make-md-column-offset( 2 );
 	}
+}
+
+footer {
+	.page;
 }
