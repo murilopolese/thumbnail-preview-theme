@@ -7,12 +7,13 @@ Please read about their license: http://tympanus.net/codrops/licensing/
 Please read about how much he doesn't give a shit: http://www.wtfpl.net/
 
 # Road map
+* Typography improvement
 * Better interface to edit custom fields
 * Add support to video
 * Add support to small galleries on post preview
 * Add favicon
-* Add infinite scroll
 * Add hover state to thumbnails
+* Theme screenshot
 
 # Changelog
 ## v0.3
