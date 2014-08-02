@@ -7,7 +7,6 @@ Please read about their license: http://tympanus.net/codrops/licensing/
 Please read about how much he doesn't give a shit: http://www.wtfpl.net/
 
 # Road map
-* Typography improvement
 * Better interface to edit custom fields
 * Add support to video
 * Add support to small galleries on post preview
@@ -16,6 +15,10 @@ Please read about how much he doesn't give a shit: http://www.wtfpl.net/
 * Theme screenshot
 
 # Changelog
+## v0.4
+* Typography improvement
+* Layout spacing improvement
+
 ## v0.3
 * Twitter bootstrap migration
 * Add support to pages
