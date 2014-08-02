@@ -6350,6 +6350,8 @@ header section img {
   padding: 5px 10px;
   font-weight: bold;
   border: solid 2px #333333;
+  display: inline-block;
+  margin-top: 15px;
 }
 .preview-row section aside a:hover {
   color: #4d4d4d;
